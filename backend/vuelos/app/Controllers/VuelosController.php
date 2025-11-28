@@ -18,8 +18,9 @@ class VuelosController
     {
         $data = $request->getParsedBody();
 
-        if (!isset($data['origen'], $data['destino'], $data['fecha'], 
-                  $data['hora'], $data['precio'], $data['nave_id'])) {
+        if (!isset($data['origin'], $data['destination'], 
+                  $data['departure'], $data['arrival'], 
+                  $data['price'], $data['nave_id'])) {
 
             return jsonResponse($response, ["error" => "Todos los campos son requeridos"], 400);
         }
@@ -46,7 +47,6 @@ class VuelosController
 
         $data = $request->getParsedBody();
 
-        // Validación opcional
         if (isset($data['nave_id']) && !Nave::find($data['nave_id'])) {
             return jsonResponse($response, ["error" => "La nave no existe"], 404);
         }
@@ -59,7 +59,7 @@ class VuelosController
 
     public function delete(Request $request, Response $response, array $args)
     {
-        $id = (int) $args['id'];
+        $id = (int)$args['id'];
         $vuelo = Vuelo::find($id);
 
         if (!$vuelo)
@@ -75,16 +75,16 @@ class VuelosController
 
         $query = Vuelo::with('nave');
 
-        if (!empty($params['origen'])) {
-            $query->where('origen', 'LIKE', "%{$params['origen']}%");
+        if (!empty($params['origin'])) {
+            $query->where('origin', 'LIKE', "%{$params['origin']}%");
         }
 
-        if (!empty($params['destino'])) {
-            $query->where('destino', 'LIKE', "%{$params['destino']}%");
+        if (!empty($params['destination'])) {
+            $query->where('destination', 'LIKE', "%{$params['destination']}%");
         }
 
-        if (!empty($params['fecha'])) {
-            $query->where('fecha', $params['fecha']);
+        if (!empty($params['date'])) {
+            $query->whereDate('departure', $params['date']);
         }
 
         $rows = $query->get();

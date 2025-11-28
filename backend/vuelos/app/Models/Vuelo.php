@@ -5,17 +5,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Vuelo extends Model
 {
-    protected $table = 'vuelos';
+    protected $table = 'flights';
     protected $primaryKey = 'id';
     public $timestamps = false;
 
     protected $fillable = [
-        'origen',
-        'destino',
-        'fecha',
-        'hora',
-        'precio',
-        'nave_id'
+        'nave_id',
+        'origin',
+        'destination',
+        'departure',
+        'arrival',
+        'price'
     ];
 
     // Relación: un vuelo pertenece a una nave
@@ -27,6 +27,6 @@ class Vuelo extends Model
     // Un vuelo puede tener muchas reservas
     public function reservas()
     {
-        return $this->hasMany(Reserva::class, 'vuelo_id', 'id');
+        return $this->hasMany(Reserva::class, 'flight_id', 'id');
     }
 }

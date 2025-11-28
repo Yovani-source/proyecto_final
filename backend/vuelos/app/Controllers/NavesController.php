@@ -17,14 +17,14 @@ class NavesController
     {
         $data = $request->getParsedBody();
 
-        if (!isset($data['nombre'], $data['capacidad'], $data['tipo'])) {
+        if (!isset($data['name'], $data['capacity'], $data['model'])) {
             return jsonResponse($response, ["error" => "Todos los campos son requeridos"], 400);
         }
 
         $nave = Nave::create([
-            'nombre' => $data['nombre'],
-            'capacidad' => (int)$data['capacidad'],
-            'tipo' => $data['tipo']
+            'name' => $data['name'],
+            'capacity' => (int)$data['capacity'],
+            'model' => $data['model']
         ]);
 
         return jsonResponse($response, [

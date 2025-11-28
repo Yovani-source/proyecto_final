@@ -2,9 +2,10 @@
 #            MICRO SERVICIO VUELOS          #
 #        TESTS COMPLETOS - .HTTP FILE       #
 #############################################
+@token = e818da10d1f65e2d4ed9d3dd4495a1ece0677a654d5cd5cc4dc7756923d7d4de
 
 #############################################
-#                 NAVES                    #
+#                 NAVES                     #
 #############################################
 
 ### Obtener todas las naves
@@ -18,9 +19,9 @@ POST http://127.0.0.1:9000/naves/create
 Content-Type: application/json
 
 {
-  "nombre": "Nave Estelar",
-  "capacidad": 180,
-  "tipo": "Comercial"
+  "name": "Aeronave X1",
+  "capacity": 180,
+  "model": "Airbus A320"
 }
 
 ###
@@ -30,9 +31,9 @@ PUT http://127.0.0.1:9000/naves/update/1
 Content-Type: application/json
 
 {
-  "nombre": "Nave Estelar Pro",
-  "capacidad": 250,
-  "tipo": "VIP"
+  "name": "Aeronave X1 Pro",
+  "capacity": 250,
+  "model": "Airbus A321"
 }
 
 ###
@@ -56,34 +57,34 @@ POST http://127.0.0.1:9000/vuelos/create
 Content-Type: application/json
 
 {
-  "origen": "Bogotá",
-  "destino": "Medellín",
-  "fecha": "2025-12-01",
-  "hora": "08:30",
-  "precio": 350000,
+  "origin": "Bogotá",
+  "destination": "Medellín",
+  "departure": "2025-12-01 08:00",
+  "arrival": "2025-12-01 09:00",
+  "price": 350000,
   "nave_id": 2
 }
 
 ###
 
-### Actualizar vuelo
+### Actualizar vuelo (id=1)
 PUT http://127.0.0.1:9000/vuelos/update/1
 Content-Type: application/json
 
 {
-  "precio": 400000,
-  "destino": "Cali"
+  "price": 400000,
+  "destination": "Cali"
 }
 
 ###
 
-### Eliminar vuelo
+### Eliminar vuelo (id=1)
 DELETE http://127.0.0.1:9000/vuelos/delete/1
 
 ###
 
 ### Buscar vuelos
-GET http://127.0.0.1:9000/vuelos/search?origen=Bogotá&destino=Medellín&fecha=2025-12-01
+GET http://127.0.0.1:9000/vuelos/search?origin=Bogotá&destination=Medellín&departure=2025-12-01
 Accept: application/json
 
 
@@ -93,37 +94,28 @@ Accept: application/json
 # NOTA: ESTAS RUTAS REQUIEREN TOKEN         #
 #############################################
 
-### Obtener token del gestor (Microservicio Usuarios)
-POST http://127.0.0.1:8000/usuarios/login
-Content-Type: application/json
+# TOKEN (lo pegas aquí abajo si quieres reutilizarlo)
+# Token directo:
+# e818da10d1f65e2d4ed9d3dd4495a1ece0677a654d5cd5cc4dc7756923d7d4de
 
-{
-  "email": "gestor@gmail.com",
-  "password": "1234"
-}
-
-###
-# COPIA EL TOKEN MANUALMENTE Y PÉGALO ABAJO
-###
-
-### Crear reserva (requiere token)
+### Crear reserva
 POST http://127.0.0.1:9000/reservas/create
-Authorization: Bearer {{token}}
+Authorization: Bearer e818da10d1f65e2d4ed9d3dd4495a1ece0677a654d5cd5cc4dc7756923d7d4de
 Content-Type: application/json
 
 {
-  "vuelo_id": 2
+  "flight_id": 2
 }
 
 ###
 
-### Ver mis reservas (requiere token)
+### Ver mis reservas
 GET http://127.0.0.1:9000/reservas/my
-Authorization: Bearer {{token}}
+Authorization: Bearer e818da10d1f65e2d4ed9d3dd4495a1ece0677a654d5cd5cc4dc7756923d7d4de
 Accept: application/json
 
 ###
 
-### Cancelar reserva (requiere token)
+### Cancelar reserva (id=1)
 DELETE http://127.0.0.1:9000/reservas/delete/1
-Authorization: Bearer {{token}}
+Authorization: Bearer e818da10d1f65e2d4ed9d3dd4495a1ece0677a654d5cd5cc4dc7756923d7d4de

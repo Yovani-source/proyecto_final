@@ -7,7 +7,7 @@ $capsule = new Capsule;
 $capsule->addConnection([
     "driver" => "mysql",
     "host" => "127.0.0.1",
-    "database" => "gestion_vuelos",
+    "database" => "vuelos_app",
     "username" => "root",
     "password" => "",
     "charset" => "utf8",

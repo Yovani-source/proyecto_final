@@ -5,25 +5,26 @@ use Illuminate\Database\Eloquent\Model;
 
 class Reserva extends Model
 {
-    protected $table = 'reservas';
+    protected $table = 'reservations';
     protected $primaryKey = 'id';
     public $timestamps = false;
 
     protected $fillable = [
-        'vuelo_id',
-        'usuario_id',
-        'fecha_reserva'
+        'user_id',
+        'flight_id',
+        'status',
+        'reserved_at'
     ];
 
     // Relación: una reserva pertenece a un vuelo
     public function vuelo()
     {
-        return $this->belongsTo(Vuelo::class, 'vuelo_id', 'id');
+        return $this->belongsTo(Vuelo::class, 'flight_id', 'id');
     }
 
     // Relación: una reserva pertenece a un usuario
     public function usuario()
     {
-        return $this->belongsTo(Usuarios::class, 'usuario_id', 'id');
+        return $this->belongsTo(Usuarios::class, 'user_id', 'id');
     }
 }

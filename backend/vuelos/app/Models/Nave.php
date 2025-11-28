@@ -10,15 +10,16 @@ class Nave extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'nombre',
-        'capacidad',
-        'tipo'
+        'name',
+        'capacity',
+        'model'
     ];
 
-    // Una nave puede tener muchos vuelos
     public function vuelos()
     {
         return $this->hasMany(Vuelo::class, 'nave_id', 'id');
     }
 }
+
+
 
