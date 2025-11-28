@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Gestor</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+<script>
+// Si no hay token -> al login
+if (!localStorage.getItem("token") || localStorage.getItem("role") !== "gestor") {
+    window.location.href = "index.html";
+}
+</script>
+
+<header class="header">
+    <h2>Panel del Gestor</h2>
+    <button onclick="logout()">Cerrar Sesión</button>
+</header>
+
+<main class="container">
+
+    <section class="card">
+        <h3>Bienvenido Gestor</h3>
+        <p>Aquí podrás gestionar reservas y consultar vuelos.</p>
+
+        <p>Este módulo se completará cuando hagamos el microservicio de vuelos ✈️</p>
+    </section>
+
+</main>
+
+<script src="js/app.js"></script>
+
+</body>
+</html>
