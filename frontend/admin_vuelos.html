@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Administración de Vuelos</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <h1>Panel Administrador - Gestión de Vuelos y Naves</h1>
+    <button onclick="logout()">Cerrar Sesión</button>
+    <br><br>
+    <button onclick="window.location.href='admin.html'">Volver a Usuarios</button>
+    <hr>
+
+    <!-- ======================
+         SECCIÓN NAVES
+    ======================= -->
+    <h2>Naves</h2>
+
+    <form id="form-nave" onsubmit="return createNave()">
+        <input type="text" id="n-nombre" placeholder="Nombre de nave" required>
+        <input type="number" id="n-capacidad" placeholder="Capacidad" required>
+        <input type="text" id="n-tipo" placeholder="Tipo de nave" required>
+        <button type="submit">Crear Nave</button>
+    </form>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th><th>Nombre</th><th>Capacidad</th><th>Tipo</th><th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody id="tabla-naves"></tbody>
+    </table>
+
+    <hr>
+
+    <!-- ======================
+         SECCIÓN VUELOS
+    ======================= -->
+    <h2>Vuelos</h2>
+
+    <form id="form-vuelo" onsubmit="return createVuelo()">
+        <input type="text" id="v-origen" placeholder="Origen" required>
+        <input type="text" id="v-destino" placeholder="Destino" required>
+        <input type="date" id="v-fecha" required>
+        <input type="time" id="v-hora" required>
+        <input type="number" id="v-precio" placeholder="Precio" required>
+        
+        <select id="v-nave_id" required></select>
+
+        <button type="submit">Crear Vuelo</button>
+    </form>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th><th>Origen</th><th>Destino</th><th>Fecha</th><th>Hora</th><th>Precio</th><th>Nave</th><th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody id="tabla-vuelos"></tbody>
+    </table>
+
+    <script src="js/vuelos_admin.js"></script>
+</body>
+</html>

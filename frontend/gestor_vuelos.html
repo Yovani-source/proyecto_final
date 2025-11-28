@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestor de Reservas - Vuelos</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <h1>Panel del Gestor - Reservas</h1>
+
+    <button onclick="logout()">Cerrar Sesión</button>
+    <button onclick="window.location.href='home.html'">Volver</button>
+
+    <hr>
+
+    <!-- ======================
+         BUSCAR VUELOS
+    ======================= -->
+    <h2>Buscar vuelos disponibles</h2>
+
+    <form id="form-buscar" onsubmit="return buscarVuelos()">
+        <input type="text" id="b-origen" placeholder="Origen">
+        <input type="text" id="b-destino" placeholder="Destino">
+        <input type="date" id="b-fecha">
+
+        <button type="submit">Buscar</button>
+    </form>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th><th>Origen</th><th>Destino</th><th>Fecha</th><th>Hora</th><th>Precio</th><th>Nave</th><th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody id="tabla-vuelos"></tbody>
+    </table>
+
+    <hr>
+
+    <!-- ======================
+         RESERVAS
+    ======================= -->
+    <h2>Mis Reservas</h2>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th><th>Vuelo</th><th>Fecha</th><th>Hora</th><th>Origen</th><th>Destino</th><th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody id="tabla-reservas"></tbody>
+    </table>
+
+    <script src="js/vuelos_gestor.js"></script>
+</body>
+</html>
