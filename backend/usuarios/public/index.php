@@ -11,7 +11,7 @@ $routers = require __DIR__ . '/../app/Config/routers.php';
 $app = AppFactory::create();
 $app->addBodyParsingMiddleware();
 $routers($app);
-// ================= CORS =====================
+
 $app->options('/{routes:.+}', function ($request, $response) {
     return $response;
 });

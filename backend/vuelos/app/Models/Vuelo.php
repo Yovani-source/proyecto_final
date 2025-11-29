@@ -18,7 +18,7 @@ class Vuelo extends Model
         'price'
     ];
 
-    // Relación: un vuelo pertenece a una nave
+    // Un vuelo pertenece a una nave
     public function nave()
     {
         return $this->belongsTo(Nave::class, 'nave_id', 'id');

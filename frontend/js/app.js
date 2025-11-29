@@ -1,11 +1,9 @@
-// ======================================================
+
 // CONFIGURACIÓN
-// ======================================================
+
 const API = "http://127.0.0.1:8000/usuarios";
 
-// ======================================================
 // LOGIN
-// ======================================================
 async function login() {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
@@ -40,18 +38,15 @@ async function login() {
     }
 }
 
-// ======================================================
 // LOGOUT
-// ======================================================
 function logout() {
     localStorage.removeItem("token");
     localStorage.removeItem("role");
     window.location.href = "index.html";
 }
 
-// ======================================================
+
 // REGISTRAR USUARIO (solo admin)
-// ======================================================
 async function registerUser() {
     const name = document.getElementById("reg-name").value;
     const email = document.getElementById("reg-email").value;
@@ -82,9 +77,7 @@ async function registerUser() {
     getUsers();
 }
 
-// ======================================================
 // LISTAR USUARIOS
-// ======================================================
 async function getUsers() {
     const body = document.getElementById("users-table-body");
 
@@ -118,9 +111,7 @@ async function getUsers() {
     });
 }
 
-// ======================================================
 // MODAL EDITAR
-// ======================================================
 function openEdit(id, name, email) {
     document.getElementById("edit-box").style.display = "block";
     document.getElementById("edit-id").value = id;
@@ -149,9 +140,8 @@ async function updateUser() {
     getUsers();
 }
 
-// ======================================================
 // MODAL CAMBIAR ROL
-// ======================================================
+
 function openRole(id) {
     document.getElementById("role-box").style.display = "block";
     document.getElementById("role-id").value = id;

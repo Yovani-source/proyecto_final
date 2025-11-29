@@ -1,24 +1,21 @@
 const API_V = "http://127.0.0.1:9000";
 
-// ===================
 // VALIDAR SESIÓN
-// ===================
+
 if (!localStorage.getItem("token") || localStorage.getItem("role") !== "administrador") {
     alert("No autorizado");
     window.location.href = "index.html";
 }
 
-// ===================
 // LOGOUT
-// ===================
+
 function logout() {
     localStorage.clear();
     window.location.href = "index.html";
 }
 
-// ========================
 // NAVES
-// ========================
+
 async function loadNaves() {
     const res = await fetch(API_V + "/naves/all");
     const data = await res.json();
@@ -79,9 +76,8 @@ async function deleteNave(id) {
     loadNaves();
 }
 
-// ========================
 // VUELOS
-// ========================
+
 async function loadVuelos() {
     const res = await fetch(API_V + "/vuelos/all");
     const data = await res.json();

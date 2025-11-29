@@ -1,24 +1,23 @@
 const API_V = "http://127.0.0.1:9000";
 
-// ====================
 // VALIDAR SESIÓN
-// ====================
+
 if (!localStorage.getItem("token") || localStorage.getItem("role") !== "gestor") {
     alert("No autorizado");
     window.location.href = "index.html";
 }
 
-// ====================
+
 // LOGOUT
-// ====================
+
 function logout() {
     localStorage.clear();
     window.location.href = "index.html";
 }
 
-// ===============================
+
 // BUSCAR VUELOS
-// ===============================
+
 async function buscarVuelos() {
     const origen = document.getElementById("b-origen").value;
     const destino = document.getElementById("b-destino").value;
@@ -59,9 +58,7 @@ async function buscarVuelos() {
     return false;
 }
 
-// ===============================
 // CREAR RESERVA
-// ===============================
 async function reservar(vuelo_id) {
     const res = await fetch(API_V + "/reservas/create", {
         method: "POST",
@@ -78,9 +75,8 @@ async function reservar(vuelo_id) {
     loadReservas();
 }
 
-// ===============================
 // LISTAR RESERVAS DEL GESTOR
-// ===============================
+
 async function loadReservas() {
     const res = await fetch(API_V + "/reservas/my", {
         headers: { "Authorization": "Bearer " + localStorage.getItem("token") }
@@ -111,10 +107,7 @@ async function loadReservas() {
         `;
     });
 }
-
-// ===============================
 // CANCELAR RESERVA
-// ===============================
 async function cancelar(id) {
     if (!confirm("¿Cancelar reserva?")) return;
 

@@ -14,9 +14,8 @@ return function($app): void {
         return $response;
     });
 
-    // ============================
     // RUTAS DE USUARIOS
-    // ============================
+   
     $app->group('/usuarios', function(RouteCollectorProxy $group){
 
         // Obtener todos los usuarios (solo administrador)

@@ -8,9 +8,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 
 class UsuariosController
 {
-    // -------------------------
-    // FUNCION AUXILIAR
-    // -------------------------
+  
     private function json(Response $response, $data, int $status = 200)
     {
         $response->getBody()->write(json_encode($data));
@@ -19,18 +17,15 @@ class UsuariosController
             ->withStatus($status);
     }
 
-    // -------------------------
     // OBTENER USUARIOS
-    // -------------------------
+ 
     public function getUsuarios(Request $request, Response $response)
     {
         $rows = Usuarios::all();
         return $this->json($response, $rows);
     }
-
-    // -------------------------
     // LOGIN
-    // -------------------------
+
     public function login(Request $request, Response $response): Response
     {
         $data = $request->getParsedBody();
@@ -68,10 +63,7 @@ class UsuariosController
             ]
         ]);
     }
-
-    // -------------------------
     // REGISTRAR USUARIO (solo admin)
-    // -------------------------
     public function register(Request $request, Response $response)
 {
     $data = $request->getParsedBody();
@@ -188,9 +180,8 @@ public function update(Request $request, Response $response, array $args)
 
     return $this->json($response, ["message" => "Usuario actualizado correctamente"]);
 }
-// =====================================
+
 // CAMBIAR ROL DE USUARIO (solo admin)
-// =====================================
 public function updateRole(Request $request, Response $response, array $args)
 {
     $id = (int)$args['id'];

@@ -4,25 +4,20 @@ use Illuminate\Database\Capsule\Manager as Capsule;
 
 require __DIR__ . '/../vendor/autoload.php';
 
-// =====================
-// CARGAR CONFIG
-// =====================
+// CARGAR CONFIGURACIONES
 require __DIR__ . '/../app/Config/data-BS.php';
 require __DIR__ . '/../app/Config/helpers.php';
 
 $routes = require __DIR__ . '/../app/Config/routers.php';
 
-// =====================
 // CREAR APP
-// =====================
 $app = AppFactory::create();
 
 // Para leer JSON correctamente
 $app->addBodyParsingMiddleware();
 
-// =====================
 // HABILITAR CORS
-// =====================
+
 $app->options('/{routes:.+}', function ($req, $res) {
     return $res;
 });
@@ -36,12 +31,6 @@ $app->add(function ($req, $handler) {
         ->withHeader("Content-Type", "application/json");
 });
 
-// =====================
-// INICIALIZAR RUTAS
-// =====================
 $routes($app);
 
-// =====================
-// EJECUTAR
-// =====================
 $app->run();

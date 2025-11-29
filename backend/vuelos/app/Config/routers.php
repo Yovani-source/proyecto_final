@@ -8,9 +8,7 @@ use Slim\Routing\RouteCollectorProxy;
 
 return function($app){
 
-    // ==========================
-    // RUTAS NAVES
-    // ==========================
+ // RUTAS NAVES
     $app->group('/naves', function(RouteCollectorProxy $group){
 
         $group->get('/all', [NavesController::class, 'all']);
@@ -20,9 +18,8 @@ return function($app){
 
     });
 
-    // ==========================
     // RUTAS VUELOS
-    // ==========================
+   
     $app->group('/vuelos', function(RouteCollectorProxy $group){
 
         $group->get('/all', [VuelosController::class, 'all']);
@@ -34,9 +31,7 @@ return function($app){
         $group->get('/search', [VuelosController::class, 'search']);
     });
 
-    // ==========================
     // RUTAS RESERVAS
-    // ==========================
     $app->group('/reservas', function(RouteCollectorProxy $group){
 
         // Crear reserva (solo gestor autenticado)
